@@ -1,7 +1,11 @@
 <?php
 require '../src/functions.php';
 
-$contact = select_all_assoc("contact");
+$page = (isset($_GET['p'])) ? (int) $_GET['p'] : 1;
+$total_page = ceil(table_length("contact") / 5);
+$start_index = 5 * ($page - 1);
+
+$contact = select_all_assoc("contact", $start_index);
 
 if (isset($_POST['submit-new-contact'])) {
     $nama_depan = htmlspecialchars($_POST['nama-depan']);
@@ -129,6 +133,14 @@ if (isset($_GET['s'])) {
                 </tbody>
             </table>
         </div>
+
+        <?php if ($total_page > 1): ?>
+        <div class="btn-group mt-10">
+            <?php for ($i = 1; $i <= $total_page; $i++): ?>
+            <a href="index.php?p=<?=$i?>" class="btn btn-sm btn-secondary btn-outline"><?=$i?></a>
+            <?php endfor?>
+        </div>
+        <?php endif?>
     </main>
 </body>
 

@@ -6,10 +6,21 @@ $db = "latihan_uts_s3";
 
 $conn = mysqli_connect($host, $user, $pass, $db);
 
-function select_all_assoc($table)
-{
+function table_length($table) {
     global $conn;
     $raw_data = mysqli_query($conn, "SELECT * FROM $table");
+    $rows = [];
+    while ($row = mysqli_fetch_assoc($raw_data)) {
+        array_push($rows, $row);
+    }
+
+    return sizeof($rows);
+}
+
+function select_all_assoc($table, $start_index)
+{
+    global $conn;
+    $raw_data = mysqli_query($conn, "SELECT * FROM $table LIMIT $start_index, 5");
     $rows = [];
     while ($row = mysqli_fetch_assoc($raw_data)) {
         array_push($rows, $row);

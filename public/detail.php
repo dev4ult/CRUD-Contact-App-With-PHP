@@ -50,17 +50,20 @@ if (isset($_GET['id'])) {
 
 <body class="font-poppins flex items-center justify-center h-screen">
     <main>
-        <a href="index.php" class="btn btn-sm btn-accent btn-outline ">
-            <img src="./img/back-arrow.svg" alt="return back" class="w-5">
-        </a>
+        <div class="flex items-center gap-2">
+            <a href="index.php" class="btn btn-sm btn-accent btn-outline ">
+                <img src="./img/back-arrow.svg" alt="return back" class="w-5">
+            </a>
 
-        <div class="my-5 ">
-            <h1><?=$person['nama_depan'] . ' ' . $person['nama_belakang']?></h1>
-            <h1><?=$person['telepon']?></h1>
-            <h1><?=$person['email']?></h1>
+            <label for="delete-contact" class="btn btn-sm btn-accent">Delete</label>
         </div>
 
-        <label for="delete-contact" class="btn btn-sm btn-error">Delete</label>
+        <div class="my-5 ">
+            <p class="text-xl p-3 border-b-2 border-r-2 border-white w-fit">
+                <?=$person['nama_depan'] . ' ' . $person['nama_belakang']?></p>
+            <p class="text-xl p-3 border-l-2 border-white ml-auto w-fit"><?=$person['telepon']?></p>
+            <p class="text-xl p-3 border-t-2 border-r-2 border-white"><?=$person['email']?></->
+        </div>
 
         <input type="checkbox" id="delete-contact" class="modal-toggle" />
         <div class="modal modal-bottom sm:modal-middle">
@@ -73,7 +76,7 @@ if (isset($_GET['id'])) {
             </div>
         </div>
 
-        <label for="edit-form" class="btn btn-sm btn-info mb-10">edit</label>
+        <label for="edit-form" class="btn btn-sm btn-secondary mb-10">edit</label>
 
         <input type="checkbox" id="edit-form" class="modal-toggle" />
         <div class="modal modal-bottom sm:modal-middle ">
