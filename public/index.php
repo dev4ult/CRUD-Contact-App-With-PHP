@@ -85,7 +85,6 @@ if (isset($_GET['s'])) {
             </script>
         </div>
 
-
         <input type="checkbox" id="add-form" class="modal-toggle" />
         <div class="modal modal-bottom sm:modal-middle ">
             <div class="modal-box">
